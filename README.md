@@ -48,7 +48,7 @@ The tax registration number is displayed with the store contact details near the
 For example:
 
 ```text
-VAT No. GB 383 6653 63
+VAT No. GB 123 4567 89
 ```
 
 ## Releases
