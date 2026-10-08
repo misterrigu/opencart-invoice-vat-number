@@ -12,8 +12,8 @@
 					'store_fax'        => $store_fax,
       ]]></search>
       <add position="after"><![CDATA[
-					'invoice_tax_label'  => $this->config->get('module_rigu_invoice_tax_number_label'),
-					'invoice_tax_number' => $this->config->get('module_rigu_invoice_tax_number_number'),
+					'invoice_tax_label'  => $this->config->get('module_rigu_invoice_tax_number_label') ? $this->config->get('module_rigu_invoice_tax_number_label') : 'VAT No.',
+					'invoice_tax_number' => $this->config->get('module_rigu_invoice_tax_number_status') ? $this->config->get('module_rigu_invoice_tax_number_number') : '',
       ]]></add>
     </operation>
   </file>
