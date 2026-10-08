@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+  <name>Rigu - Invoice VAT / Tax Number (Configurable)</name>
+  <code>rigu_invoice_tax_number_configurable</code>
+  <version>1.0.0</version>
+  <author>Rigu</author>
+  <link>https://rigu.co.uk</link>
+
+  <file path="admin/controller/sale/order.php">
+    <operation>
+      <search><![CDATA[
+					'store_fax'        => $store_fax,
+      ]]></search>
+      <add position="after"><![CDATA[
+					'invoice_tax_label'  => $this->config->get('module_rigu_invoice_tax_number_label'),
+					'invoice_tax_number' => $this->config->get('module_rigu_invoice_tax_number_number'),
+      ]]></add>
+    </operation>
+  </file>
+
+  <file path="admin/view/template/sale/order_invoice.twig">
+    <operation>
+      <search><![CDATA[
+            <b>{{ text_website }}</b> <a href="{{ order.store_url }}">{{ order.store_url }}</a></td>
+      ]]></search>
+      <add position="replace"><![CDATA[
+            <b>{{ text_website }}</b> <a href="{{ order.store_url }}">{{ order.store_url }}</a>{% if order.invoice_tax_number %}<br/>
+            <b>{{ order.invoice_tax_label ? order.invoice_tax_label : 'VAT No.' }}</b> {{ order.invoice_tax_number }}{% endif %}</td>
+      ]]></add>
+    </operation>
+  </file>
+</modification>
